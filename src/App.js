@@ -6,6 +6,7 @@ import Signup from "./components/signup/Signup";
 import Login from './components/Login/Login';
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,10 +28,13 @@ function App() {
     )
   } else {
     routes = (
-      <Route path='/' element={<Navbar />} >
-        <Route path="signup" element={<Signup />} />
-        <Route path="Login" element={<Login />} />
-      </Route>
+      <>
+        <Route path='/' element={<Navbar />} >
+          <Route path="signup" element={<Signup />} />
+          <Route path="Login" element={<Login />} />
+        </Route>
+        <Route path="*" element={<PageNotFound/>} />
+      </>
     )
   }
 
